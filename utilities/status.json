@@ -1,0 +1,69 @@
+{
+    "ERROR": {
+        "NOT_ALLOWED": "ERROR_NOT_ALLOWED",
+        "SERVER_CRITICAL": "ERROR_SERVER_CRITICAL",
+        "NO_CONNECTION": "ERROR_NO_CONNECTION"
+    },
+    "USER": {
+        "NOT_FOUND": "USER_NOT_FOUND",
+        "RESET": "USER_RESET",
+        "BANNED": "USER_BANNED",
+        "TIMED_OUT": "USER_TIMED_OUT",
+        "INSUFFICIENT_PERMISSIONS": "USER_INSUFFICIENT_PERMISSIONS",
+        "SIGNUP": {
+            "SUCCESS": "USER_SIGNUP_SUCCESS",
+            "PENDING": "USER_SIGNUP_PENDING",
+            "FAILED": "USER_SIGNUP_FAILED",
+            "DUPLICATE": "USER_SIGNUP_DUPLICATE",
+            "BANNED": "USER_SIGNUP_BANNED",
+            "HANDLE_TAKEN": "USER_SIGNUP_HANDLE_TAKEN",
+            "EMAIL_TAKEN": "USER_SIGNUP_EMAIL_TAKEN"
+        },
+        "SIGNIN": {
+            "SUCCESS": "USER_SIGNIN_SUCCESS",
+            "PENDING": "USER_SIGNIN_PENDING",
+            "FAILED": "USER_SIGNIN_FAILED",
+            "BANNED": "USER_SIGNIN_BANNED"
+        },
+        "SIGNOUT": {
+            "SUCCESS": "USER_SIGNOUT_SUCCESS",
+            "PENDING": "USER_SIGNOUT_PENDING",
+            "FAILED": "USER_SIGNOUT_FAILED"
+        },
+        "REFRESH": {
+            "SUCCESS": "USER_REFRESH_SUCCESS",
+            "PENDING": "USER_REFRESH_PENDING",
+            "FAILED": "USER_REFRESH_FAILED"
+        }
+    },
+    "UPLOAD": {
+        "SUCCESS": "UPLOAD_SUCCESS",
+        "PENDING": "UPLOAD_PENDING",
+        "FAILED": "UPLOAD_FAILED"
+    },
+    "AUTH": {
+        "SUCCESS": "AUTH_SUCCESS",
+        "PENDING": "AUTH_PENDING",
+        "FAILED": "AUTH_FAILED"
+    },
+    "CREATE": {
+        "SUCCESS": "CREATE_SUCCESS",
+        "PENDING": "CREATE_PENDING",
+        "FAILED": "CREATE_FAILED"
+    },
+    "READ": {
+        "SUCCESS": "READ_SUCCESS",
+        "PENDING": "READ_PENDING",
+        "FAILED": "READ_FAILED"
+    },
+    "UPDATE": {
+        "SUCCESS": "UPDATE_SUCCESS",
+        "PENDING": "UPDATE_PENDING",
+        "FAILED": "UPDATE_FAILED"
+    },
+    "DELETE": {
+        "SUCCESS": "DELETE_SUCCESS",
+        "PENDING": "DELETE_PENDING",
+        "FAILED": "DELETE_FAILED"
+    }
+}

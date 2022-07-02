@@ -1,0 +1,7 @@
+{
+    "EMAIL": {
+        "INIT": "CONFIRM_EMAIL_INIT",
+        "RESET": "CONFIRM_EMAIL_RESET",
+        "CHANGE": "CONFIRM_EMAIL_CHANGE"
+    }
+}

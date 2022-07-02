@@ -1,0 +1,22 @@
+{
+    "banned": {
+        "permissionLevel": 0,
+        "title": "Banned"
+    },
+    "guest":{
+        "permissionLevel": 1,
+        "title": "Gæst"
+    },
+    "member":{
+        "permissionLevel": 2,
+        "title": "Medlem"
+    },
+    "moderator":{
+        "permissionLevel": 3,
+        "title": "Ordstyrer"
+    },
+    "administrator":{
+        "permissionLevel": 4,
+        "title": "Administrator"
+    }
+}
