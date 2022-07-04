@@ -104,7 +104,7 @@ const moderator = (req, res, next) => {
 // Checks user role for a permissionLevel matching the admin role
 const admin = (req, res, next) => {
   // Higher level than 0, which is moderator role
-  if (req.user.role.permissionLevel > 3) {
+  if (req.user.role.permissionLevel >= 3) {
     return next();
   }
   return res.json(compose(status.USER.INSUFFICIENT_PERMISSIONS))
