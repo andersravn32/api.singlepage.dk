@@ -8,6 +8,7 @@ const POST = {
     title: null,
     content: null,
     published: false,
+    slug: null,
     creator: null,
     date: Math.round(Date.now()),
 }
@@ -35,6 +36,11 @@ module.exports = async (req, res) => {
     // validate length of title and content
     if (post.title.length >= 150 || post.content.length >= 20000){
         return res.json(compose(status.CREATE.FAILED))
+    }
+
+    // Formatting
+    if (!post.slug){
+        post.slug = post.title.replace(/\s/g, "-");
     }
 
     try{
