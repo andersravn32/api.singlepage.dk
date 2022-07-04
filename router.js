@@ -19,4 +19,6 @@ router.use("/content", express.static(path.join(__dirname, "/content")));
 // Authentication route
 router.use("/auth", require("./routes/auth"));
 
+// Blog route
+router.use("/blog", require("./routes/blog"));
 module.exports = router;
