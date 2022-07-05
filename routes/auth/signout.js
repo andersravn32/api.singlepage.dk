@@ -6,9 +6,6 @@ const client = new MongoClient(url);
 
 const signout = async (req, res) => {
 
-  // Get quest starttime
-  const startTime = Date.now();
-
   // Get refresh token from request body
   const refreshToken = req.body.token;
   
@@ -31,9 +28,7 @@ const signout = async (req, res) => {
     if (query.deletedCount){
         return res.json(compose(status.USER.SIGNOUT.SUCCESS));
     }
-    return res.json(compose(status.USER.SIGNOUT.FAILED,{
-        time: Date.now() - startTime,
-    }));
+    return res.json(compose(status.USER.SIGNOUT.FAILED));
 
   } catch (error) {
     console.log(error);
