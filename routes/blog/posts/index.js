@@ -3,10 +3,10 @@ const router = express.Router();
 const check = require("../../../middleware/check");
 
 // Get all blogposts
-router.get("/", require("./getPost"));
+router.get("/", require("./getPosts"));
 
 // Get single blogpost
-router.get("/:id", require("./getPosts"));
+router.get("/:id", require("./getPost"));
 
 // Create new blogpost
 router.post("/create", check.auth, check.admin, require("./createPost"));
