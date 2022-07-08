@@ -21,4 +21,7 @@ router.use("/auth", require("./routes/auth"));
 
 // Blog route
 router.use("/blog", require("./routes/blog"));
+
+// User administration routes
+router.use("/user", require("./routes/user"));
 module.exports = router;
