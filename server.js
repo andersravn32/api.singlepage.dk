@@ -40,7 +40,7 @@ const port = process.env.PORT || 3000;
 
 // Enable server
 server.listen(port, () => {
-  console.log(`Time: ${Date.now()}`)
+  console.log(`Time: ${Math.round(Date.now() / 1000)}`)
   console.log(`Package: ${require("./package.json").name}`)
   console.log(`Version: ${require("./package.json").version}`)
   console.log(`Description: ${require("./package.json").description}`)
