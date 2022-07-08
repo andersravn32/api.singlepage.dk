@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const signin = async (req, res) => {
-
+  
   // Validate email and password format
   const { email, password } = req.body;
   if (!email || !password) {
