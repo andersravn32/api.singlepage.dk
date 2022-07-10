@@ -50,9 +50,11 @@ const signup = async (req, res) => {
   }
   try {
     // Connect to database, use database "singlepage", select collection "users"
+    console.log("connected")
     await client.connect();
     const db = client.db("singlepage");
 
+    console.log("find duplicates")
     // Find duplicates in database based on either handle or email
     const duplicate = await db.collection("users").findOne({
       $or: [
@@ -76,6 +78,7 @@ const signup = async (req, res) => {
       }
     }
 
+    console.log("Hash password")
     // Create hashed version of user password
     user.password = await bcrypt.hash(user.password, 10);
 
@@ -102,6 +105,7 @@ const signup = async (req, res) => {
       }
     );
 
+    console.log("Insert token")
     await db.collection("tokens").insertOne({
       userId: query.insertedId,
       token: token,
