@@ -22,10 +22,9 @@ const USER = {
   role: roles.guest,
   profile: null,
   picture: null,
+  coverPicture: null,
   signupTime: Math.round(Date.now()),
   referer: null,
-  course: null,
-  chapter: null,
 };
 
 // Handle signup method
