@@ -1,7 +1,6 @@
 const { status, compose } = require("../../../utilities/composer.js");
-const { MongoClient, ObjectId } = require("mongodb");
-const url = process.env.MONGO_STRING;
-const client = new MongoClient(url);
+const { ObjectId } = require("mongodb");
+const database = require("../../../utilities/database");
 
 module.exports = async (req, res) => {
     if (!req.params.id) {
@@ -10,8 +9,8 @@ module.exports = async (req, res) => {
     const id = req.params.id;
     try {
       // Connect to database
-      await client.connect();
-      const db = client.db("singlepage");
+      await database.connect();
+      const db = database.db("singlepage");
   
       const query = await db.collection("posts").deleteOne({_id: ObjectId(id)})
   
@@ -19,6 +18,8 @@ module.exports = async (req, res) => {
       return res.json(compose(status.DELETE.FAILED));
       }
       
+      database.close();
+
       // Return success status to user
       return res.json(compose(status.DELETE.SUCCESS));
     } catch (error) {

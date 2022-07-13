@@ -1,8 +1,5 @@
 const { status, compose } = require("../../utilities/composer.js");
-const { MongoClient, ObjectId } = require("mongodb");
-const jwt = require("jsonwebtoken");
-const url = process.env.MONGO_STRING;
-const client = new MongoClient(url);
+const database = require("../../utilities/database");
 
 const signout = async (req, res) => {
 
@@ -15,14 +12,14 @@ const signout = async (req, res) => {
   }
 
   try {
-    await client.connect();
-    const db = client.db("singlepage");
+    await database.connect();
+    const db = database.db("singlepage");
 
     // Query deletion order for refreshToken
     const query = await db.collection("tokens").deleteOne({ token: refreshToken });
     
     // Close database connection
-    client.close();
+    database.close();
 
     // Return correct status message to end user based on deletioncount
     if (query.deletedCount){

@@ -1,11 +1,9 @@
 const { status, compose } = require("../../utilities/composer.js");
-const { MongoClient } = require("mongodb");
 const roles = require("../../utilities/roles.json");
-const url = process.env.MONGO_STRING;
-const client = new MongoClient(url);
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const confirmations = require("../../utilities/confirmations.json");
+const database = require("../../utilities/database");
 
 /* 
 TODO: 
@@ -50,8 +48,8 @@ const signup = async (req, res) => {
   }
   try {
     // Connect to database, use database "singlepage", select collection "users"
-    await client.connect();
-    const db = client.db("singlepage");
+    await database.connect();
+    const db = database.db("singlepage");
 
     // Find duplicates in database based on either handle or email
     const duplicate = await db.collection("users").findOne({
@@ -111,7 +109,7 @@ const signup = async (req, res) => {
     // TODO
 
     // Close database connection
-    client.close();
+    database.close();
 
     // Return signup status with new userid and request time
     return res.json(

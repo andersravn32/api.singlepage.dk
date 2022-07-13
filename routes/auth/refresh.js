@@ -1,8 +1,7 @@
 const { status, compose } = require("../../utilities/composer.js");
-const { MongoClient, ObjectId } = require("mongodb");
+const { ObjectId } = require("mongodb");
 const jwt = require("jsonwebtoken");
-const url = process.env.MONGO_STRING;
-const client = new MongoClient(url);
+const database = require("../../utilities/database");
 
 const refresh = async (req, res) => {
 
@@ -15,8 +14,8 @@ const refresh = async (req, res) => {
 
   try {
     // Connect to database, use database "singlepage", select collection "users"
-    await client.connect();
-    const db = client.db("singlepage");
+    await database.connect();
+    const db = database.db("singlepage");
 
     // Find token in database
     const token = await db
@@ -52,7 +51,9 @@ const refresh = async (req, res) => {
             expiresIn: "30m",
           }
         );
-        client.close();
+
+        // Close database connection
+        database.close();
 
         // Return access token to end user
         return res.json(

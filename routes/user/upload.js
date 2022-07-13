@@ -4,9 +4,9 @@ const express = require("express");
 const router = express.Router();
 const check = require("../../middleware/check");
 const { status, compose } = require("../../utilities/composer");
-const { MongoClient, ObjectId } = require("mongodb");
-const url = process.env.MONGO_STRING;
-const client = new MongoClient(url);
+const { ObjectId } = require("mongodb");
+
+const database = require("../../utilities/database");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -49,8 +49,8 @@ router.post("/", check.auth, upload.single("avatar"), async (req, res) => {
 
   try {
     // Connect to database
-    await client.connect();
-    const db = client.db("singlepage");
+    await database.connect();
+    const db = database.db("singlepage");
 
     // Update profile field on user
     const query = await db.collection("users").updateOne(
@@ -66,6 +66,8 @@ router.post("/", check.auth, upload.single("avatar"), async (req, res) => {
     if (!query.matchedCount) {
       return res.json(compose(status.UPLOAD.FAILED));
     }
+
+    database.close();
 
     // Return success if user was found
     return res.json(compose(status.UPLOAD.SUCCESS, req.file));

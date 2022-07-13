@@ -1,10 +1,8 @@
 const { status, compose } = require("../../utilities/composer.js");
-const { MongoClient, ObjectId } = require("mongodb");
 const roles = require("../../utilities/roles.json");
-const url = process.env.MONGO_STRING;
-const client = new MongoClient(url);
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const database = require("../../utilities/database");
 
 const signin = async (req, res) => {
   
@@ -16,8 +14,8 @@ const signin = async (req, res) => {
 
   try {
     // Connect to database, use database "singlepage", select collection "users"
-    await client.connect();
-    const db = client.db("singlepage");
+    await database.connect();
+    const db = database.db("singlepage");
 
     const user = await db.collection("users").findOne({ email: email });
     
@@ -68,7 +66,7 @@ const signin = async (req, res) => {
     );
 
     // Close database connection
-    client.close();
+    database.close();
 
     // Return refresh token and access token to end user
     return res.json(

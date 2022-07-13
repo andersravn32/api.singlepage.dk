@@ -1,7 +1,5 @@
 const { status, compose } = require("../../../utilities/composer.js");
-const { MongoClient, ObjectId } = require("mongodb");
-const url = process.env.MONGO_STRING;
-const client = new MongoClient(url);
+const database = require("../../../utilities/database");
 
 // Post template object
 const POST = {
@@ -44,8 +42,8 @@ module.exports = async (req, res) => {
 
   try {
     // Connect to database
-    await client.connect();
-    const db = client.db("singlepage");
+    await database.connect();
+    const db = database.db("singlepage");
 
     // Insert query
     const query = await db.collection("posts").insertOne(post);
@@ -55,6 +53,7 @@ module.exports = async (req, res) => {
       return res.json(compose(status.CREATE.FAILED));
     }
 
+    database.close();
     // Return id of inserted post
     return res.json(compose(status.CREATE.SUCCESS, query.insertedId));
   } catch (error) {

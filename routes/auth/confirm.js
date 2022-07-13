@@ -1,10 +1,9 @@
 const { status, compose } = require("../../utilities/composer.js");
-const { MongoClient, ObjectId } = require("mongodb");
-const url = process.env.MONGO_STRING;
-const client = new MongoClient(url);
+const { ObjectId } = require("mongodb");
 const confirmations = require("../../utilities/confirmations.json");
 const jwt = require("jsonwebtoken");
 const roles = require("../../utilities/roles.json");
+const database = require("../../utilities/database");
 
 const confirm = async (req, res) => {
   // Get token from request query
@@ -16,8 +15,8 @@ const confirm = async (req, res) => {
   // Decode and verify token
   try {
     // Connect to database
-    await client.connect();
-    const db = client.db("singlepage");
+    await database.connect();
+    const db = database.db("singlepage");
 
     // Find token in database
     const token = await db
@@ -60,7 +59,7 @@ const confirm = async (req, res) => {
         }
 
         // close database connection 
-        client.close();
+        database.close();
         
         // Redirect request to token callback
         return res.redirect(content.callback);
