@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
 
     try {
       // Connect to database
-      await client.connect();
+      console.log(await client.connect());
       const db = client.db("singlepage");
   
       // Read query
