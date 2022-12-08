@@ -35,7 +35,7 @@ app.get("*", (req, res) => {
           facebook: "",
           website: "",
         },
-        image: "/src/assets/img/ude-af-kontrol_cut.png",
+        image: "https://i.ibb.co/TLNC7bZ/ude-af-kontrol-cut.png",
         header:
           "https://www.information.dk/sites/information.dk/files/styles/930x/public/media/2018/03/23/we_uak1035.jpg?itok=1DEX5cpG",
         body: "<hello>",
